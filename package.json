@@ -1,0 +1,37 @@
+{
+  "name": "symphony-github",
+  "version": "0.1.0",
+  "description": "A Symphony-style GitHub Issues orchestrator for coding agents.",
+  "type": "module",
+  "bin": {
+    "symphony-github": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "WORKFLOW.example.md",
+    ".env.example"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "dev": "tsx src/index.ts",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "validate": "GITHUB_OWNER=example GITHUB_REPO=repo GITHUB_TOKEN=placeholder tsx src/index.ts validate WORKFLOW.example.md",
+    "once": "tsx src/index.ts once"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "liquidjs": "^10.21.1",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.13"
+  }
+}
